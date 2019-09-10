@@ -1,7 +1,19 @@
-import sys, math
+import math
+import argparse
 
-file_name = sys.argv[1]
-col_num = int(sys.argv[2])
+parser = argparse.ArgumentParser(description='calc mean and stdev of a column',
+                                prog='get_column_stats')
+
+parser.add_argument('--file_name', type=str,
+                    help='Name of the file', required=True)
+
+parser.add_argument('--column_number', type=int,
+                    help='The column number', required=True)
+
+args = parser.parse_args()
+
+#file_name = sys.argv[1]
+#col_num = int(sys.argv[2])
 
 f = open(file_name, 'r')
 
