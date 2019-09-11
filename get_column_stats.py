@@ -1,31 +1,45 @@
 import math
 import argparse
+import sys
 
-parser = argparse.ArgumentParser(description='calc mean and stdev of a column',
-                                prog='get_column_stats')
 
-parser.add_argument('--file_name', type=str,
-                    help='Name of the file', required=True)
+def main():
+    parser = argparse.ArgumentParser(description='calc mean and stdev of'
+                                     'a column', prog='get_column_stats')
 
-parser.add_argument('--column_number', type=int,
-                    help='The column number', required=True)
+    parser.add_argument('--file_name', type=str,
+                        help='Name of the file', required=True)
 
-args = parser.parse_args()
+    parser.add_argument('--column_number', type=int,
+                        help='The column number', required=True)
 
-#file_name = sys.argv[1]
-#col_num = int(sys.argv[2])
+    args = parser.parse_args()
 
-f = open(file_name, 'r')
+    file_name = args.file_name
+    col_num = args.column_number
 
-V = []
+    try:
+        f = open(file_name, 'r')
+    except FileNotFoundError:
+        print('Could not find ' + file_name)
+        sys.exit(1)
+    except PermissionError:
+        print('Could not open ' + file_name)
+        sys.exit(1)
 
-for l in f:
-    A = [int(x) for x in l.split()]
-    V.append(A[col_num])
+    V = []
 
-mean = sum(V)/len(V)
+    for l in f:
+        A = [int(x) for x in l.split()]
+        V.append(A[col_num])
 
-stdev = math.sqrt(sum([(mean-x)**2 for x in V]) / len(V))
+    mean = sum(V)/len(V)
 
-print('mean:', mean)
-print('stdev:', stdev)
+    stdev = math.sqrt(sum([(mean-x)**2 for x in V]) / len(V))
+
+    print('mean:', mean)
+    print('stdev:', stdev)
+
+
+if __name__ == '__main__':
+    main()
