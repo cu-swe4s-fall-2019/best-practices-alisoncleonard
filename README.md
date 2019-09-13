@@ -35,50 +35,53 @@ deviation of the integers in the specified column.
 To process the column 2 of the file data.txt using get_column_stats.py, the
 following code can be run from the command line:
 
-'''
+```
 $ python get_column_stats.py --file_name test.txt --column_number 2
-'''
+```
 
 Arguments and handled using argparse and can be called in either order.
 
-If 'data.txt' contained the columns:
+If data.txt contained the columns:
 
 |1|4|6|3|4|
+
 |3|4|2|8|5|
+
 |0|4|6|7|3|
+
 |5|6|2|6|1|
 
 then the script would return the output:
 
-'''
+```
 mean: 4.0
 
 stdev: 2.0
-'''
+```
 
 ## How to install software
 
 
 1. Ensure that conda is installed in your environment
-If '$ conda' gives an error, install conda as required by your operating system
+If `$ conda` gives an error, install conda as required by your operating system
 
 2. Update and configure conda
 
-'''
+```
 $ conda update --yes conda
 
 $ conda config --add channels bioconda
 
 $ echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.bashrc
-'''
+```
 
 3. Install python and required libraries
 
-'''
+```
 $ conda install --yes python=3.6
 
 $ conda install -y pycodestyle
-'''
+```
 
 4. Access software on [GitHub]
 (https://github.com/cu-swe4s-fall-2019/best-practices-alisoncleonard)
