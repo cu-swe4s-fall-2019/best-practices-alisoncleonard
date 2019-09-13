@@ -44,11 +44,8 @@ Arguments and handled using argparse and can be called in either order.
 If data.txt contained the columns:
 
 |1|4|6|3|4|
-
 |3|4|2|8|5|
-
 |0|4|6|7|3|
-
 |5|6|2|6|1|
 
 then the script would return the output:
