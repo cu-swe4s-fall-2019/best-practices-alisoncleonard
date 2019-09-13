@@ -42,12 +42,11 @@ $ python get_column_stats.py --file_name test.txt --column_number 2
 Arguments and handled using argparse and can be called in either order.
 
 If data.txt contained the columns:
-\
-1 4 6 3 4
-3 4 2 8 5
-0 4 6 7 3
-5 6 2 6 1
-\
+
+| 5 | 4 | 6 | 3 | 4 |
+| 3 | 4 | 2 | 5 | 8 |
+| 0 | 4 | 6 | 7 | 3 |
+| 5 | 6 | 2 | 6 | 1 |
 
 then the script would return the output:
 
