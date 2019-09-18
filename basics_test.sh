@@ -2,11 +2,13 @@
 
 echo 'running test file basics_test.sh'
 
-echo 'checking style.py and get_column_stats.py adherance to PEP8 style guide'
+echo "checking python files' adherance to PEP8 style guide"
 
 pycodestyle style.py
 
 pycodestyle get_column_stats.py
+
+pycodestyle basics_test.py
 
 echo 'testing exception for FileNotFoundError'
 
