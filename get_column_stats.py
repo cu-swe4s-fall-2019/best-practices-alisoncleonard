@@ -129,8 +129,7 @@ def main():
     column_mean = mean(V)
     column_stdev = stdev(V)
 
-    print('mean:', column_mean)
-    print('stdev:', column_stdev)
+    print(['mean: ' + str(column_mean) + ', stdev: ' + str(column_stdev)])
 
 
 if __name__ == '__main__':
