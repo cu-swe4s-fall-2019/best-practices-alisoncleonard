@@ -15,31 +15,25 @@ pycodestyle basics_test.py
 
 echo 'testing exception for FileNotFoundError'
 
-run main python get_column_stats.py --file_name test.txt --column_number 2
+run test_find_file python get_column_stats.py --file_name test.txt --column_number 2
 assert_in_stdout 'Could not find test.txt'
 assert_no_stderr
 assert_exit_code 1
 
 echo 'testing a file of random integers'
 
-A=$RANDOM
-B=$RANDOM
-C=$RANDOM
-D=$RANDOM
-E=$RANDOM
+(for i in `seq 1 100`; do
+    echo "$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM\t$RANDOM";
+done )> data.txt
 
-#(for i in `seq 1 100`; do
-#    echo "$A\t$B\t$C\t$D\t$E";
-#done )> data.txt
-
-#run main python get_column_stats.py --file_name data.txt --column_number 2
-#assert_in_stdout 'mean: '
-
-#python get_column_stats.py --file_name data.txt --column_number 2
+run test_random_file python get_column_stats.py --file_name data.txt --column_number 2
+assert_stdout
+assert_no_stderr
+assert_exit_code 0
 
 echo 'testing exception for IndexError, column does not exist'
 
-run main python get_column_stats.py --file_name data.txt --column_number 5
+run test_column_index python get_column_stats.py --file_name data.txt --column_number 5
 assert_in_stdout 'Column number 5 does not exist'
 assert_no_stderr
 assert_exit_code 1
@@ -51,8 +45,8 @@ V=1
     echo "$V\t$V\t$V\t$V\t$V";
 done )> data.txt
 
-run main python get_column_stats.py --file_name data.txt --column_number 2
-assert_in_stdout 'mean: ' 1.0, 'stdev: ' 0.0
+run test_constant_file python get_column_stats.py --file_name data.txt --column_number 2
+assert_in_stdout 'mean: 1.0, stdev: 0.0'
 assert_no_stderr
 assert_exit_code 0
 
@@ -64,14 +58,14 @@ done )> data.txt
 
 echo 'testing file with strings in a non-specified column'
 
-run main python get_column_stats.py --file_name data.txt --column_number 1
-assert_in_stdout 'mean: ' 1.0, 'stdev: ' 0.0
+run test_unspecified_column_strings python get_column_stats.py --file_name data.txt --column_number 1
+assert_in_stdout 'mean: 1.0, stdev: 0.0'
 assert_no_stderr
 assert_exit_code 0
 
 echo 'testing exception for ValueError, column contains non integers'
 
-run main python get_column_stats.py --file_name data.txt --column_number 2
+run test_specified_column_strings python get_column_stats.py --file_name data.txt --column_number 2
 assert_in_stdout 'Column contains non integer values, unable to process'
 assert_no_stderr
 assert_exit_code 1
