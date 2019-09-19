@@ -2,6 +2,7 @@
 
 test -e ssshtest || wget -q https://raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
 . ssshtest
+source ssshtest 
 
 echo 'running test file basics_test.sh'
 
