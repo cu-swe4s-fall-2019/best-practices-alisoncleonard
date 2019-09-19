@@ -13,6 +13,7 @@ Calculate the mean and standard deviation of a column of integers
 import math
 import argparse
 import sys
+import random
 
 
 def mean(int_list):
@@ -27,7 +28,16 @@ def mean(int_list):
     --------
     The mean of int_list
     """
-    return sum(int_list)/len(int_list)
+    try:
+        if int_list == []:
+            print('An empty list does not have a mean')
+            return None
+        else:
+            return sum(int_list)/len(int_list)
+    except TypeError:
+        print('argument for mean(int_list) must be a list of integers')
+        raise TypeError
+        sys.exit(1)
 
 
 def stdev(int_list):
@@ -42,8 +52,18 @@ def stdev(int_list):
     --------
     The population standard deviation of int_list
     """
-    list_mean = mean(int_list)
-    return math.sqrt(sum([(list_mean-x)**2 for x in int_list]) / len(int_list))
+    try:
+        if int_list == []:
+            print('An empty list does not have a standard deviation')
+            return None
+        else:
+            list_mean = mean(int_list)
+            return math.sqrt(sum([(list_mean-x)**2 for x in int_list]) /
+                             len(int_list))
+    except TypeError:
+        print('argument for stdev(int_list) must be a list of integers')
+        raise TypeError
+        sys.exit(1)
 
 
 def main():
