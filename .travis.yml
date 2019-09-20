@@ -12,6 +12,6 @@ before_install:
     - conda install --yes python=3.6
 
 script:
-    - sh basics_test.sh
+    - bash basics_test.sh
     - python basics_test.py
     - pycodestyle get_column_stats.py
