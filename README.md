@@ -1,29 +1,23 @@
-# best-practices: Software Engineering for Scientists Homework 1
+# best-practices: Software Engineering for Scientists Homework 1 & 2
 
 ## Project Description
 
 This project tests our ability to format software development projects using
-best practices. The project contains 3 main files:
+best practices. The project contains 5 main files:
 
 1. style.py - a python file containing useless functions, formatted to conform
 to the PEP8 style
 
-summary of changes: formatted to conform to PEP8 style guide
-based on changes indicated by pycodestyle
-
 2. get_column-stats.py - a python file that takes an input file and column
 number and returns the mean and standard deviation of that column
 
-summary of changes: added docstrings, used argparse to handle
-input arguments, put code inside a __main__ function, included try/except
-statements to handle possible exceptions and added exit codes
-
 3. basics_test.sh - a bash shell containing functional tests for
-get_column_stats.py
+get_column_stats.py, using the ssshtest structure
 
-summary of changes: added tests for unknown file, file containing non-integer
-data, and column index out of range, added text explaining what tests are
-running
+4. basics_test.py - a python file containing unit tests for the functions
+mean and stdev used in get_column_stats.py
+
+5. .travis.yml - configured to run test files
 
 ## How to do math using *get_column_stats.py*
 
